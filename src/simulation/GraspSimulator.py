@@ -28,7 +28,7 @@ class GraspSimulator:
 
         #project_root = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
         #urdf_path = os.path.join(project_root, "urdf")
-        #p.setAdditionalSearchPath(urdf_path)
+        # p.setAdditionalSearchPath(urdf_path)
 
         p.resetSimulation()
         p.setGravity(0, 0, -10)
@@ -49,6 +49,7 @@ class GraspSimulator:
         print("PyBullet environment initialized (balanced physics mode)")
 
     def disconnect(self) -> None:
+        """ stop communication with the pybullet simulation """
         if self.connected:
             p.disconnect()
             self.connected = False
@@ -85,14 +86,17 @@ class GraspSimulator:
 
         # Approach the object
         start_pos = np.array(position)
-        target_pos = np.array(obj.position) + np.array([0, 0, obj.get_grasp_height()])
+        target_pos = np.array(obj.position) + \
+            np.array([0, 0, obj.get_grasp_height()])
 
-        approach_factor = 3.67 if isinstance(gripper, TwoFingerGripper) else 1.6
+        approach_factor = 3.67 if isinstance(
+            gripper, TwoFingerGripper) else 1.6
         approach_steps = 25 if is_cylinder else 15
 
         for t in range(approach_steps):
             alpha = (t + 1) / approach_steps
-            new_pos = start_pos + (alpha / approach_factor) * (target_pos - start_pos)
+            new_pos = start_pos + (alpha / approach_factor) * \
+                (target_pos - start_pos)
             gripper.move_to_pose(new_pos.tolist(), orientation)
             self.step(1)
 
@@ -137,6 +141,7 @@ class GraspSimulator:
         gripper: AbstractGripper,
         is_cylinder: bool = False
     ) -> bool:
+        """ check whether the object has remained in the gripper and hasnt slipped """
         if isinstance(gripper, TwoFingerGripper):
             gripper.weak_close()
         else:

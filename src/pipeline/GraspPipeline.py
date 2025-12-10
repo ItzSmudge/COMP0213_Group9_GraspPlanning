@@ -53,11 +53,9 @@ class GraspPipeline:
         self.train_metrics: Dict[str, Dict] = {}
         self.test_metrics: Dict[str, Dict] = {}
 
-    # ------------------------------------------------------------------ #
     # Dataset generation
-    # ------------------------------------------------------------------ #
-
     def generate_dataset(self):
+        """ generate datasets for all gripper+object combinations """
         print("\n" + "=" * 70)
         print("DATASET GENERATION")
         print("=" * 70)
@@ -122,6 +120,7 @@ class GraspPipeline:
         n_samples: int,
         data_manager: DataManager,
     ):
+        """ collect all the data needed for sampling """
         gripper.load()
         gripper.attach_fixed()
         gripper.open()
@@ -163,11 +162,10 @@ class GraspPipeline:
 
         self.simulator.step(10)
 
-    # ------------------------------------------------------------------ #
     # Dataset analysis
-    # ------------------------------------------------------------------ #
 
     def analyze_dataset_distribution(self):
+        """ analyse dataset and check the average success """
         print("\n" + "=" * 70)
         print("DATASET ANALYSIS")
         print("=" * 70)
@@ -178,11 +176,10 @@ class GraspPipeline:
                 success_rate = df["success"].mean()
                 print(f"{key:25s}: {len(df)} samples, {success_rate:.1%}")
 
-    # ------------------------------------------------------------------ #
     # Training
-    # ------------------------------------------------------------------ #
 
     def train_classifiers(self):
+        """ train classifier models to find desired hyperparameters """
         print("\n" + "=" * 70)
         print("MODEL TRAINING PHASE")
         print("=" * 70)
@@ -205,11 +202,10 @@ class GraspPipeline:
             )
             self.train_metrics[key] = metrics
 
-    # ------------------------------------------------------------------ #
     # Testing
-    # ------------------------------------------------------------------ #
 
     def test_classifiers(self):
+        """ test trained models with new data to see how they perform """
         print("\n" + "=" * 70)
         print("MODEL TESTING PHASE")
         print("=" * 70)
@@ -266,6 +262,7 @@ class GraspPipeline:
                 )
 
     def _run_test(self, gripper, obj, gripper_name: str, obj_name: str):
+        """ run a test to see and evalute error metrics """
         self.simulator.connect()
 
         gripper.load()
@@ -326,9 +323,8 @@ class GraspPipeline:
         print(f"Actual success rate: {actuals_arr.mean():.1%}")
         print(f"Predicted success rate: {predictions_arr.mean():.1%}")
 
-    # ------------------------------------------------------------------ #
-
     def run_full_pipeline(self):
+        """ run the entire pipeline by using all the function previously defined """
         self.generate_dataset()
         self.analyze_dataset_distribution()
         self.train_classifiers()

@@ -8,6 +8,7 @@ class DataManager:
     """Handle creation, storage, and loading of grasp datasets."""
 
     def __init__(self, filename: str = "grasp_dataset.csv"):
+        """ initialise instance of class. Set the filename and set up a space for the data"""
         self.filename = filename
         self.data: List[Dict] = []
 
@@ -19,6 +20,7 @@ class DataManager:
         gripper_type: str,
         object_type: str
     ) -> None:
+        """ add the necessary features to the data dictionary """
         self.data.append({
             "x": position[0],
             "y": position[1],
@@ -32,6 +34,7 @@ class DataManager:
         })
 
     def save_to_csv(self) -> None:
+        "Add the sample created of the features to the csv "
         if not self.data:
             print("No data to save!")
             return
@@ -47,6 +50,7 @@ class DataManager:
         self.data.clear()
 
     def load_dataset(self) -> pd.DataFrame:
+        """ load the dataset by accessing the csv"""
         if not os.path.exists(self.filename) or os.path.getsize(self.filename) == 0:
             print(f"[INFO] No dataset found at {self.filename}. Creating new...")
             return pd.DataFrame(columns=[
@@ -55,6 +59,7 @@ class DataManager:
         return pd.read_csv(self.filename)
 
     def get_balanced_dataset(self, df: pd.DataFrame) -> pd.DataFrame:
+        "create a new dataset by using the exisiting dataset. Aim to balance the number of successes and failures"
         successes = df[df["success"] == 1]
         failures = df[df["success"] == 0]
 

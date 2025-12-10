@@ -22,6 +22,10 @@ warnings.filterwarnings("ignore")
 
 class GraspClassifier:
     def __init__(self, gripper_name=None, object_name=None, tune_hyperparams=False):
+        """
+        Create instance of the Grasp Classifier class. Initialise all the machine learning classifiers and hyper parameters
+        
+        """
         self.gripper_name = gripper_name
         self.object_name = object_name
         self.model = None
@@ -218,18 +222,21 @@ class GraspClassifier:
         }
 
     def predict(self, position, orientation):
+        """ predict whether the output is 0 or 1 """
         if self.model is None:
             raise ValueError("Model not trained. Call train() first or load a saved model.")
         features = np.array([[*position, *orientation]])
         return bool(self.model.predict(features)[0])
 
     def predict_proba(self, position, orientation):
+        """ return the probability of the output being 1"""
         if self.model is None:
             raise ValueError("Model not trained. Call train() first or load a saved model.")
         features = np.array([[*position, *orientation]])
         return self.model.predict_proba(features)[0][1]
 
     def visualize_results(self, train_metrics, test_metrics, save_path=None):
+        """ use seasborn and matplotlib to visualise the error metrics """
         has_importance = hasattr(
             self.model.named_steps.get("model"), "feature_importances_"
         )

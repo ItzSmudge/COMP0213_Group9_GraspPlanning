@@ -15,8 +15,8 @@ def get_config():
         "three_finger_urdf": "urdf/sdh.urdf",
         "sampling_radius": 0.4,
         "noise_std": 0.03,
-        "samples_per_combination": 500,
-        "n_test_samples": 50,       
+        "samples_per_combination": 100,   # Number of grasp samples- change this for dataset creation
+        "n_test_samples": 50,             # Number of new test samples to generate
         "tune_hyperparams": True,   # Use hyperparameter tuning
         "use_saved_models": True,   # Try to load saved models
         "force_retrain": False,     # Set True to retrain and overwrite
@@ -28,15 +28,16 @@ def main():
     pipeline = GraspPipeline(config)
 
     # Uncomment any of the below lines depending on purpose
-    #pipeline.generate_dataset()   # Uncomment this line to add more data to datasets
+    pipeline.generate_dataset()   # Uncomment this line to add more data to datasets
 
-    #pipeline.analyze_dataset_distribution()  # Analyze percentage of success/failure in each dataset
+    # Analyze percentage of success/failure in each dataset
+    pipeline.analyze_dataset_distribution()
 
     """NOTE: these two functions do not work independently, as the plots require the training statistics
     The model will not be retrained if use_saved_models is set to True and force_retrain is set to False
     in the config dictionary"""
-    pipeline.train_classifiers()             #Train classifcation models 
-    pipeline.test_classifiers()              #Test classification models on new data
+    pipeline.train_classifiers()  # Train classifcation models
+    pipeline.test_classifiers()  # Test classification models on new data
 
 
 if __name__ == "__main__":
