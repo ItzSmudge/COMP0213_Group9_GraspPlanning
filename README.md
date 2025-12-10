@@ -10,16 +10,12 @@ The implementation is cleanly modularised and organised to support dataset gener
 
 Install all dependencies from the requirements.txt file
 
-
 This installs:
 
 - PyBullet + pybullet_data  
 - NumPy, Pandas  
 - Matplotlib, Seaborn  
 - scikit-learn  
-
-All modules used in this project are pure Python and cross-platform.
-
 ---
 
 ## Running the Pipeline
@@ -38,7 +34,7 @@ pipeline.generate_dataset()
 
 This will:
 
-sample grasp poses around objects
+-sample grasp poses around objects
 -simulate grasp execution
 -store success/failure labels
 -save datasets to CSV or append to existing CSVs
@@ -49,7 +45,7 @@ pipeline.train_classifiers()
 ```
 This step:
 
-loads datasets
+-loads datasets from the CSV files
 -balances success vs. failure samples
 -trains Logistic Regression, SVM, Random Forest, Gradient Boosting, and MLP models
 -performs hyperparameter tuning if enabled
