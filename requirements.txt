@@ -1,0 +1,54 @@
+############################################################
+# COMP0213 Group 9 – Grasp Planning Project
+# Python Dependencies (Pinned to latest stable versions)
+#
+# INSTALLATION INSTRUCTIONS (pip):
+# ---------------------------------
+# 1. Create a virtual environment (Recommended):
+#       python3 -m venv venv
+#
+# 2. Activate the virtual environment:
+#
+#    On Linux/macOS (bash/zsh):
+#       source venv/bin/activate
+#
+#    On Windows (Command Prompt/PowerShell):
+#       venv\Scripts\activate
+#
+# 3. Install all dependencies using the command:
+#       pip install -r requirements.txt
+############################################################
+
+
+######################################
+# CORE SIMULATION & PHYSICS ENGINE
+######################################
+
+pybullet==3.2.7             # Latest stable version for physics simulation
+pybullet_data==3.2.7        # Provides built-in URDF assets
+
+
+######################################
+# NUMERICAL, DATA PROCESSING, & UTILS
+######################################
+
+numpy==2.3.5                # Core package for vector and matrix operations
+pandas==2.3.3               # Dataset storage, CSV handling, preprocessing
+scipy==1.16.3               # Advanced numerical routines (optimization, spatial transforms)
+tqdm==4.67.1                # Progress bars for dataset generation and training loops
+
+
+######################################
+# MACHINE LEARNING
+######################################
+
+scikit-learn==1.7.2         # Classifiers, pipelines, preprocessing, metrics
+# Note: scikit-learn includes all ML models imported (LogisticRegression, SVC, etc.)
+
+
+######################################
+# VISUALIZATION & ANALYSIS
+######################################
+
+matplotlib==3.10.7          # Performance plots, accuracy graphs
+seaborn==0.13.2             # Confusion matrix heatmaps, nice plot styling
