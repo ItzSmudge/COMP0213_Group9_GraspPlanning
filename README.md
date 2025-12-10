@@ -85,43 +85,43 @@ Edit `get_config()` in `main.py` to adjust parameters.
 ```
 ---
 ### Project Filesystem
+
 COMP0213_group9_GraspPlanning/
 │
 ├── src/
-│   ├── main.py
-│   │
-│   ├── grippers/
-│   │   ├── AbstractGripper.py
-│   │   ├── TwoFingerGripper.py
-│   │   └── ThreeFingerGripper.py
-│   │
-│   ├── objects/
-│   │   ├── AbstractObject.py
-│   │   ├── BoxObject.py
-│   │   └── CylinderObject.py
-│   │
-│   ├── sampling/
-│   │   ├── AbstractSampler.py
-│   │   └── SphericalSampler.py
-│   │
-│   ├── simulation/
-│   │   └── GraspSimulator.py
-│   │
-│   ├── data/
-│   │   └── DataManager.py
-│   │
-│   ├── classifier/
-│   │   └── GraspClassifier.py
-│   │
-│   ├── pipeline/
-│   │   └── GraspPipeline.py
-│   │
-│   └── urdf/
-│       ├── cylinder.urdf
-│       ├── pr2_gripper.urdf
-│       ├── sdh.urdf
-│       └── cube_small.urdf
+│   ├── main.py
+│   │
+│   ├── grippers/
+│   │   ├── AbstractGripper.py
+│   │   ├── TwoFingerGripper.py
+│   │   └── ThreeFingerGripper.py
+│   │
+│   ├── objects/
+│   │   ├── AbstractObject.py
+│   │   ├── BoxObject.py
+│   │   └── CylinderObject.py
+│   │
+│   ├── sampling/
+│   │   ├── AbstractSampler.py
+│   │   └── SphericalSampler.py
+│   │
+│   ├── simulation/
+│   │   └── GraspSimulator.py
+│   │
+│   ├── data/
+│   │   └── DataManager.py
+│   │
+│   ├── classifier/
+│   │   └── GraspClassifier.py
+│   │
+│   ├── pipeline/
+│   │   └── GraspPipeline.py
+│   │
+│   └── urdf/
+│       ├── cylinder.urdf
+│       ├── pr2_gripper.urdf
+│       ├── sdh.urdf
+│       └── cube_small.urdf
 │
 ├── requirements.txt
 └── README.md
-
