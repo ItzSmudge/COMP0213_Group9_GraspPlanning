@@ -1,8 +1,8 @@
 # COMP0213 – Grasp Planning Project (Group 9)
 
-This repository implements a complete robotic grasp planning framework using **PyBullet**, **machine learning classification**, and a fully modular simulation pipeline. The system simulates multiple gripper types, samples grasp poses around various object geometries, evaluates grasp stability in physics, and trains high-level classifiers to predict grasp success.
+This repository implements a complete robotic grasp planning framework using **PyBullet**, ** ML classification**, and a fully modular simulation pipeline. The system simulates multiple gripper types, samples grasp poses around various object geometries, evaluates grasp stability in physics, and trains high-level classifiers to predict grasp success.
 
-The implementation is cleanly modularised and organised to support dataset generation, training, and testing in a reproducible workflow.
+The implementation is modularised and organised to support dataset generation, training, and testing.
 
 ---
 
