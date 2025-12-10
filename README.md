@@ -34,10 +34,10 @@ pipeline.generate_dataset()
 
 This will:
 
--sample grasp poses around objects
--simulate grasp execution
--store success/failure labels
--save datasets to CSV or append to existing CSVs
+- sample grasp poses around objects
+- simulate grasp execution
+- store success/failure labels
+- save datasets to CSV or append to existing CSVs
 
 ### Train classification models
 ```python
@@ -45,13 +45,13 @@ pipeline.train_classifiers()
 ```
 This step:
 
--loads datasets from the CSV files
--balances success vs. failure samples
--trains Logistic Regression, SVM, Random Forest, Gradient Boosting, and MLP models
--performs hyperparameter tuning if enabled
--selects and saves the best-performing model per gripper/object combination
+- loads datasets from the CSV files
+- balances success vs. failure samples
+- trains Logistic Regression, SVM, Random Forest, Gradient Boosting, and MLP models
+- performs hyperparameter tuning if enabled
+- selects and saves the best-performing model per gripper/object combination
 
-Savied models appear under 
+Saved models appear under 
 `src/trained_models/`
 
 ### Test trained classifiers
@@ -62,10 +62,10 @@ pipeline.test_classifiers()
 This will:
 
 generate new test grasps
--predict success using trained classifiers
--simulate each grasp in PyBullet
--report accuracy and confusion matrices
--generate and save performance plots
+- predict success using trained classifiers
+- simulate each grasp in PyBullet
+- report accuracy and confusion matrices
+- generate and save performance plots
 
 NOTE: The testing and training functions do not work independently, as the plots require the training statistics
 The model will not be retrained if use_saved_models is set to True and force_retrain is set to False in the config dictionary.
